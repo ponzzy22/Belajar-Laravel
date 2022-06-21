@@ -33,12 +33,14 @@
         @if (Auth::user())
             <a href="{{ route('logout') }}"><button class="btn btn-danger">Logout</button></a>
         @else
-            
+
         @endif
         <br><br><br>
         <a href="{{ route('client') }}"><button class="btn btn-info">CLIENT</button></a>
         <a href="{{ route('admin') }}"><button class="btn btn-info">ADMIN</button></a>
         <a href="{{ route('rektor') }}"><button class="btn btn-info">REKTOR</button></a>
+        <br><br>
+        <a href="{{ route('register') }}"><button class="btn btn-warning">REGISTER</button></a>
 
     </div>
 

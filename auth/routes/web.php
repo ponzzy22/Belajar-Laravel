@@ -25,6 +25,9 @@ Route::get('/',function(){
     return view('welcome');
 });
 
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('postuser', [AuthController::class, 'postuser'])->name('postuser');
+
 
 //MIDDLEWARE
 Route::group(['middleware' => ['auth','checkRole:admin']],function(){
