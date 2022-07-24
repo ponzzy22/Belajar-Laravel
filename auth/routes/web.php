@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\UiController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::group(['middleware' => ['auth','checkRole:admin']],function(){
 
 Route::group(['middleware' => ['auth','checkRole:admin,client']],function(){
     Route::get('client', [UiController::class, 'client'])->name('client');
+    Route::resource('car', CarController::class);
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin,rektor']],function(){

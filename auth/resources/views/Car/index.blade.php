@@ -18,8 +18,29 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
 </head>
-<body>
-    <h1>HALAMAN CLIENT</h1>
-<a href="{{ route('car.index') }}"><button class="btn btn-info">CAR</button></a>
+<body><br>
+    <form action="{{ route('car.store') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="text" name="name">
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+        <input type="text" name="price">
+        <input type="file" name="image">
+        <button type="submit">SIMPAN</button>
+    </form>
+    <br>
+    <table class="table table-bordered">
+        <tr>
+            <td>name</td>
+            <td>price</td>
+            <td>image</td>
+        </tr>
+        @foreach ($car as $item)
+            <tr>
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->price }}</td>
+                <td><img src="{{ asset($item->image) }}" width="50px" height="50px" alt=""></td>
+            </tr>
+        @endforeach
+    </table>
 </body>
 </html>
